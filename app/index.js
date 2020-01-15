@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
-const meetingsRouter = require('/app/routes/meetings.routes.js');
+const meetingsRouter = require('./routes/meetings.routes.js');
 const app = express();
 
 app.use(bodyParser.json());
