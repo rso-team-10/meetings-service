@@ -23,6 +23,7 @@
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "ics": "^2.18.0",
-    "mongoose": "^5.8.7"
+    "mongoose": "^5.8.7",
+    "node": "latest"
   }
 }

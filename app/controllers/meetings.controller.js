@@ -1,4 +1,4 @@
-import {TextEncoder as Base64} from "node/util";
+
 
 const {meetingSchema} = require("../models/meeting");
 const {db} = require("../db");
@@ -72,7 +72,8 @@ const controllers = {
                         console.log(error)
                         return
                     }
-                    let encodedEvent = Base64.encode(value);
+                    let buf = Buffer.from(value);
+                    let encodedEvent = buf.toString('base64');
                     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
                     const msg = {
                         to: 'vc5725@student.uni-lj.si',
