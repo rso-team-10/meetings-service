@@ -18,4 +18,4 @@ router.put("/update", (req, res) => meetingsControler.updateMeeting(req,res));
 
 router.delete("/delete", (req,res) => meetingsControler.deleteMeeting(req,res));
 
-module.exports=router
+module.exports=router;
