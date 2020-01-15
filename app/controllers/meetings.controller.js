@@ -127,7 +127,7 @@ const controllers = {
     },
     deleteMeeting: async function (req, res) {
         let meetingModel = db.model('report', meetingSchema)
-        meetingModel.deleteOne({_id: req.params.report_id}, function (err, found) {
+        meetingModel.deleteOne({_id: req.body.id}, function (err, found) {
             if (err) {
                 res.json({error: err})
             }
