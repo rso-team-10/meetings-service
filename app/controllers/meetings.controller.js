@@ -31,7 +31,7 @@ const controllers = {
         })
     },
     getMeetingByID: async function (req, res) {
-        let meetingModel = db.model('todo', meetingSchema);
+        let meetingModel = db.model('meeting', meetingSchema);
         meetingModel.findOne({_id: req.params.id}, function (err, meeting) {
             if (err) {
                 console.log(err);
@@ -46,7 +46,7 @@ const controllers = {
         let meeting_date = req.body.meeting_date;
         let meeting_name = req.body.meeting_name;
         let meeting_description = req.body.meeting_description;
-        let meetingModel = db.model('todo', meetingSchema);
+        let meetingModel = db.model('meeting', meetingSchema);
         let Meeting = new meetingModel({
             user_id: req.body.user_id,
             meeting_date: meeting_date,
@@ -104,8 +104,7 @@ const controllers = {
         let meeting_description = req.body.meeting_description;
         let user_id = req.body.user_id;
 
-        let meetingModel = db.model('todo', meetingSchema);
-        //TODO
+        let meetingModel = db.model('meeting', meetingSchema);
         meetingModel.updateOne(
             {
                 _id: mongoose.Types.ObjectId(req.body.id)
