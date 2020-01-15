@@ -1,0 +1,36 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - "10"
+
+cache:
+  directories:
+    - "node_modules"
+
+services:
+  - docker
+
+# Set env vars
+env:
+  global:
+    - DOCKER_IMAGE=vid99/meetings-service-image
+    - VERSION=1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
+
+install:
+  - npm install
+
+script:
+  - docker build -t "$DOCKER_IMAGE:$VERSION" .
+  - docker tag "$DOCKER_IMAGE:$VERSION" "$DOCKER_IMAGE:latest"
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push "$DOCKER_IMAGE:$VERSION"
+
+deploy:
+  - provider: script
+    script: bash ./k8s/deploy.sh
+    on:
+      branch: master

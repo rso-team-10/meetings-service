@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meetings-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meetings-app
+  template:
+    metadata:
+      labels:
+        app: meetings-app
+    spec:
+      containers:
+        - image: vid99/meetings-service-image:1.0.0-SNAPSHOT-1.0
+          name: meetings-app
+          ports:
+            - containerPort: 3000
+              name: server
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meetings-app
+spec:
+  ports:
+    - name: meetings-app
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: meetings-app
+---
+
+apiVersion: getambassador.io/v1
+kind: Mapping
+metadata:
+  name: meetings-app
+spec:
+  prefix: /meetings/
+  service: meetings-app:3000
