@@ -1,5 +1,3 @@
-
-
 const {meetingSchema} = require("../models/meeting");
 const {db} = require("../db");
 let mongoose = require('mongoose');
