@@ -24,4 +24,4 @@ gcloud container clusters get-credentials rso-team-10 --zone europe-west1-b
 
 echo "kubectl set image"
 
-kubectl set image deployment/todo-app todo-app=vid99/meetings-service-image:$VERSION
+kubectl set image deployment/meetings-app meetings-app=vid99/meetings-service-image:$VERSION
