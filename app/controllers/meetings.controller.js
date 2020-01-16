@@ -57,7 +57,7 @@ const controllers = {
                 res.status(400).json({error: err})
             } else {
                 const event = {
-                    start: [2018, 5, 30, 6, 30],
+                    start: [2020, 1, 16, 12, 30],
                     duration: {},
                     title: meeting_name,
                     description: meeting_description,
